@@ -8,10 +8,11 @@ import {UserService} from './user.service';
   providers: [UserService]
 })
 export class AppComponent {
+  users;
 
   constructor(private userService: UserService) {
+    this.userService.getUsers().subscribe(value => this.users = value);
     this.userService.getUsers().subscribe(value => console.log(value));
-    alert(this.userService.getUsers().subscribe(value => value.hasOwnProperty('gender')));
   }
 
 
